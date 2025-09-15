@@ -6,19 +6,35 @@
     <title>My Dashboard</title>
   </head>
   <body>
-    <header>
-    <strong>Welcome to your dashboard!</strong>
-    </header>
+        <header>
+        <strong>Welcome to your dashboard!</strong>
+        </header>
+       
+        <img id="popupImage" src="res/images/me.png" style="display:none; position:fixed; top:20px; left:20px; width:200px; z-index:1000;" alt="Popup Image">
+        
+
     <section>
     <div>
         <img src="res/images/me.png" width="128" height="128" alt="My picture">
     </div>
 
     <section>
-    <!-- </div>
-        <img src="res/images/BlueLobster.png" width="1500" height="350" alt="Blue Lobster">
+        <button type="button" onclick="showPopup()" style="font-size:12px; padding:4px 8px;">Don't click Me</button>
+            <img id="PopUpImg" src="res/images/BlueLobster.png" style="display:none;"width="1500" height="300" alt="Blue Lobster">
+            <audio id ="PopUpSound" src="res/sounds/BlueLobsterMP3.mp3"></audio>
     
-    <div> -->
+    </section>
+    <script>
+function showPopup() {
+  var img = document.getElementById('PopUpImg');
+  var audio = document.getElementById('PopUpSound');
+  img.style.display = 'block';
+  audio.play();
+  setTimeout(function() {
+    img.style.display = 'none';
+  }, 10000); // 10 seconds
+}
+</script>
     <div>
         <ul>
             <li>Guillaume Le Chartier</li>
@@ -27,7 +43,7 @@
         </ul>
     </div>
     <div>
-        <strong>2.65</strong>
+        <strong>GPA</strong>
     </div>
     </section>
     <section>
@@ -38,36 +54,40 @@
             <th>#</th>
             <th>Course Title</th>
             <th>Semester</th>
-            <th>Grade</th>
+            <th>Course link</th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <td>1</td>
-            <td>Agile software development</td>
+            <td>Machine Learning</td>
             <td>fall</td>
-            <td>82</td>
+            <td>Access course page <a href="https://courses.cs.ut.ee/2025/ml/fall" target="_blank">here</a></td>
         </tr>
         <tr>
             <td>2</td>
-            <td> Systems modelling </td>
+            <td> Introduction to data science </td>
             <td>fall</td>
-            <td>85</td>
+            <td>Access course page <a href="https://courses.cs.ut.ee/2025/ids/fall" target="_blank">here</a></td>
         </tr>
         <tr>
             <td>3</td>
-            <td> Requirements Engineering </td>
+            <td> Web Application Development </td>
             <td>fall</td>
-            <td>99</td>
+            <td>Access course page <a href="https://courses.cs.ut.ee/2025/WAD/fall" target="_blank">here</a></td>
         </tr>
         <tr>
             <td>4</td>
             <td> Human Computer Interaction </td>
             <td>fall</td>
-            <td>65</td>
+            <td>Access course page <a href="https://courses.cs.ut.ee/2025/hci/fall" target="_blank">here</a></td>
         </tr>
         </tbody>
+        
     </table>
+
+    <footer>_______________________________________________________</footer>
+
 </section>
     <footer>
     <ul>
@@ -80,4 +100,25 @@
     </ul>
     </footer>
   </body>
+  <header>Search for a specific course:</header>
+  <form action= "/page.php" method="get">
+      <input type="text" name="query" placeholder="Enter course name">
+      <input type="submit" value="Search">
+    </form>
+    <form>
+    <label for="dropdown">Choose the Semester:</label>
+    <select id="dropdown" name="options">
+      <option value="fall">Fall</option>
+      <option value="spring">Spring</option>
+     
+    </select>
+  </form>
+  <strong>Attendance:</strong>
+  <form>
+    <input type="radio" id="virtual" name="attendance" value="virtual">
+    <label for="virtual">Virtual Attendance</label><br>
+    <input type="radio" id="physical" name="attendance" value="physical">
+    <label for="physical">Physical Attendance</label>
+  </form>
+
 </html>
